@@ -13,7 +13,7 @@ def on_button_click(symbol):
             result = eval(current_text)  # Вычисление выражения
             entry.delete(0, tk.END)
             entry.insert(0, str(result))
-        except Exception :
+        except Exception:
             messagebox.showerror("Ошибка", "Некорректное выражение")
     elif symbol == "C":
         entry.delete(0, tk.END)
@@ -51,5 +51,4 @@ for button in buttons:
 
 # Запуск главного цикла программы
 root.mainloop()
-
 
