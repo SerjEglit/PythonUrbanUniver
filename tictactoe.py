@@ -1,11 +1,9 @@
 import os
-import random
-import tkinter as tk
-from tkinter import messagebox
-
-# Настройка путей для Tcl/Tk (если требуется)
 os.environ['TCL_LIBRARY'] = r'C:\Program Files\Python313\tcl\tcl8.6'
 os.environ['TK_LIBRARY'] = r'C:\Program Files\Python313\tcl\tk8.6'
+
+import tkinter as tk
+from tkinter import messagebox
 
 # Основной класс игры
 class TicTacToe:
@@ -24,18 +22,9 @@ class TicTacToe:
                 self.root, text="", font=("Arial", 24), width=5, height=2,
                 command=lambda i=i: self.make_move(i)
             )
-            button.grid(row=i // 3, column=i % 3, padx=5, pady=5, sticky="nsew")
+            button.grid(row=i // 3, column=i % 3, padx=5, pady=5)
             self.buttons.append(button)
 
-        for i in range(3):
-            self.root.grid_rowconfigure(i, weight=1)
-            self.root.grid_columnconfigure(i, weight=1)
-
-# Создание панели статистики
-    def create_scoreboard(self):
-        self.score_label = tk.Label(self.root, text=f"X: {self.score['X']} | O: {self.score['O']}", font=("Arial", 16))
-        self.score_label.grid(row=3, column=0, columnspan=3)
-        
     # Логика хода
     def make_move(self, index):
         if self.board[index] == "" and not self.check_winner():  # Если клетка пуста
@@ -73,4 +62,4 @@ class TicTacToe:
 if __name__ == "__main__":
     root = tk.Tk()
     game = TicTacToe(root)
-    root.mainloop()     
+    root.mainloop()
